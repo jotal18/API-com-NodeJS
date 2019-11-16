@@ -3,8 +3,9 @@ const {Adaptador} = require('../../sequelize')
 module.exports = {
 
     async index (req, res) {   
-      const adaptador = await Adaptador.findAll()
-      return res.json(adaptador)
+      const adaptador = await Adaptador.findAll({offset: 0, limit: 5})
+      // return res.json(adaptador)
+      return res.render('home', {adaptador})
     },
 
     async pagination(req, res) {
@@ -14,13 +15,15 @@ module.exports = {
         let count = Adaptador.count()
         let pageRender = Math.ceil(await Adaptador.count()/limit)
         if(page > pageRender)
-          res.send('Rota não existe!!!')
+          return res.send('Rota não existe!!!')
         const adaptador = await Adaptador.findAll({offset: skipPage, limit})
-        return res.json(adaptador)
+        // return res.json(adaptador)
+        return res.render('home', {adaptador})
     },
 
-    async cadastro (req, res) {
-      return res.send('Página de cadastro de controle de adaptadores')
+    cadastro (req, res) {
+      // const adaptador = Adaptador.findAll()
+      return res.send('Cadastro')
     },
 
     async store (req,res) {
@@ -45,11 +48,11 @@ module.exports = {
         const adaptador = await Adaptador.findByPk(req.params.id)
 
         if (adaptador === null) 
-          res.send('rota não existe!!')
+          return res.send('rota não existe!!')
         
-        res.json(adaptador)  
+        return res.json(adaptador)  
       } catch (error) {
-        res.status(400).send({error: error})
+        return res.status(400).send({error: error})
       }
     },
 
@@ -62,11 +65,11 @@ module.exports = {
         })
         
         if (adaptador[0] === 0) 
-          res.send('rota não existe')
+          return res.send('rota não existe')
     
-        res.json(adaptador)
+        return res.json(adaptador)
       } catch (error) {
-          res.status(400).send({error: error})
+          return res.status(400).send({error: error})
       }
     },
 
@@ -79,11 +82,11 @@ module.exports = {
         })
         
         if(adaptador === 0)
-          res.send('Rota não encontrada!!!')
+          return res.send('Rota não encontrada!!!')
     
-        res.send('Registro deletado com sucesso!!!')
+        return res.send('Registro deletado com sucesso!!!')
       } catch (error) {
-        
+        return res.send(err)
       }
     }
 };

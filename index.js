@@ -1,13 +1,21 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-
-const adaptador = require('./src/routes/adaptador_routes')
+const path = require('path')
+const router = require('./src/routes/adaptador_routes')
+const exphbs = require('express-handlebars')
 
 const app = express()
+
+app.use(express.static(__dirname + '/public'))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.use('/adaptador', adaptador)
+// configuração handlebars
+app.set("view engine", ".hbs");
+app.set('views', path.join(__dirname, './src/views'))
+app.engine('hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
 
- app.listen(3000)
+app.use('/adaptador', router)
+
+app.listen(8888)

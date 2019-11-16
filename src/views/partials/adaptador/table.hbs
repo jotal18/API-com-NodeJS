@@ -1,0 +1,26 @@
+<table class="highlight">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Matrícula</th>
+        <th>Setor</th>
+        <th>Data</th>
+        <th>Observação</th>
+    </tr>
+    </thead>
+
+    <tbody>   
+        {{#each adaptador}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.nome}}</td>
+            <td>{{this.matricula}}</td>
+            <td>{{this.setor}}</td>
+            <td>{{this.data}}</td>
+            <td>{{this.observacao}}</td>
+        </tr>
+        {{/each}}
+    </tr>
+    </tbody>
+</table>
