@@ -3,29 +3,18 @@ const {Adaptador} = require('../../sequelize')
 module.exports = {
 
     async index (req, res) {   
-      const pages = {
-        page: req.query.page || 1,
-        limit: 5, 
-        skipPage: function () {
-          return (this.limit * this.page) - this.limit
-        },
-        countRegister: await Adaptador.count(),
-        pageRender: function () {
-          return Math.ceil(this.countRegister/this.limit)
-        },
-        numberButtons: 8
-      }
+      const pageCurrent = req.query.page || 1
+      const limit =  5
+      const offset = (limit * pageCurrent) - limit
+      const countRegister = await Adaptador.count()
+      const totalPages = Math.ceil(countRegister/limit)
+      const totalButtons =  4
       
-      if(pages.page > pages.pageRender)
-        return res.send('Rota não existe!!!')
-      const adaptador = await Adaptador.findAll({offset: pages.skipPage(), 
-        limit: pages.limit})
-      return res.render('home', {adaptador, 
-        paginaAtual: pages.page, 
-        totalPaginas: pages.pageRender(),
-        totalButtons: pages.numberButtons
-      })
+      if(pageCurrent > totalPages) return res.send('Rota não existe!!!')
 
+      const adaptador = await Adaptador.findAll({offset, limit})
+
+      return res.render('home', {adaptador, pageCurrent, totalPages, totalButtons})
     },
 
     cadastro (req, res) {
@@ -33,7 +22,6 @@ module.exports = {
     },
 
     async store (req,res) {
-
       try {
         const adaptador = await Adaptador.create(req.body)
         return res.json(adaptador)  
@@ -83,7 +71,8 @@ module.exports = {
         if(adaptador === 0)
           return res.send('Rota não encontrada!!!')
     
-        return res.send('Registro deletado com sucesso!!!')
+        // return res.send('Registro deletado com sucesso!!!')
+        return res.redirect('/adaptador')
       } catch (error) {
         return res.send(err)
       }
