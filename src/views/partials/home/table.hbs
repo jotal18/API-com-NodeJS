@@ -19,6 +19,15 @@
             <td>{{this.setor}}</td>
             <td>{{this.data}}</td>
             <td>{{this.observacao}}</td>
+            <td>
+                <a class="waves-effect waves-light btn-small teal darken-1" href="/adaptador/show/{{this.id}}">Editar</a>
+            </td>
+            <td>
+                <form action="/adaptador/delete/{{this.id}}" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="waves-effect waves-light btn-small red">Deletar</button>
+                </form>
+            </td>
         </tr>
         {{/each}}
     </tr>
