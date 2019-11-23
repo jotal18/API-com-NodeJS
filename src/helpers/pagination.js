@@ -17,7 +17,7 @@ exports.pagination = function (pageCurrent, totalPages, totalButtons) {
 
                     for (; i <= (pageCurrent + 4) && i <= totalPages; i++) {
                         if (i == pageCurrent) {
-                            text += `<li class="active">
+                            text += `<li class="active blue lighten-1">
                                         <a>${i}</a>
                                     </li>`
                         }else { 

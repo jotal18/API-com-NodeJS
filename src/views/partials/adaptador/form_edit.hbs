@@ -1,0 +1,30 @@
+<div class="row">
+    <form action="/adaptador/update/{{adaptador.id}}" method="post" class="col s12">
+    <input type="hidden" name="_method" value="put">
+        <div class="input-field col s6">
+          <label for="name">Nome</label>
+          <input placeholder="Digite o nome completo" name="nome" id="nome" type="text" class="validate" value="{{adaptador.nome}}">
+        </div>
+        <div class="input-field col s6">
+          <label for="matricula">Matrícula</label>
+          <input placeholder="Digite a matrícula" name="matricula" id="matricula" type="text" class="validate" value="{{adaptador.matricula}}">
+        </div>
+        <div class="input-field col s6">
+          <label for="setor">Setor</label>
+          <input placeholder="Digite o nome do setor" name="setor" id="setor" type="text" class="validate" value="{{adaptador.setor}}">
+        </div>
+        <div class="input-field col s6">
+          <label for="data">Data</label>
+          <input placeholder="Informe a data" name="data" id="data" type="text" class="validate" value="{{adaptador.data}}">
+        </div>
+        <form class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+            <textarea name="observacao" id="observacao" class="materialize-textarea">{{adaptador.observacao}}</textarea>
+            <label for="observacao">Observação</label>
+            </div>
+        </div>
+        <button class="waves-effect waves-light btn blue lighten-1">Atualizar</button>
+        <a class="waves-effect waves-light btn" onclick=>Voltar</a>
+    </form>
+</div>

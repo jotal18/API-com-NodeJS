@@ -20,12 +20,16 @@
             <td>{{this.data}}</td>
             <td>{{this.observacao}}</td>
             <td>
-                <a class="waves-effect waves-light btn-small teal darken-1" href="/adaptador/show/{{this.id}}">Editar</a>
+                <a class="waves-effect waves-light btn-small blue lighten-1" href="/adaptador/show/{{this.id}}">
+                    <i class="Small material-icons">edit</i>
+                </a>
             </td>
             <td>
                 <form action="/adaptador/delete/{{this.id}}" method="post">
-                    <input type="hidden" name="_method" value="delete">
-                    <button type="submit" class="waves-effect waves-light btn-small red">Deletar</button>
+                    {{!-- <input type="hidden" name="_method" value="delete"> --}}
+                    <button type="submit" class="waves-effect waves-light red accent-4 btn">
+                          <i class="Small material-icons">delete</i>
+                    </button>
                 </form>
             </td>
         </tr>

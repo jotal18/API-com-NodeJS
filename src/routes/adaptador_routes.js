@@ -8,6 +8,6 @@ router.get('/cadastro', adaptador_controller.cadastro)
 router.post('/create', adaptador_controller.store)
 router.get('/show/:id', adaptador_controller.show)
 router.put('/update/:id', adaptador_controller.update)
-router.post('/delete/:id', adaptador_controller.delete)
+router.delete('/delete/:id', adaptador_controller.delete)
     
  module.exports = router

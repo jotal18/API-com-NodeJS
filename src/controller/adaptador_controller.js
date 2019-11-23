@@ -4,7 +4,7 @@ module.exports = {
 
     async index (req, res) {   
       const pageCurrent = req.query.page || 1
-      const limit =  5
+      const limit =  6
       const offset = (limit * pageCurrent) - limit
       const countRegister = await Adaptador.count()
       const totalPages = Math.ceil(countRegister/limit)
@@ -18,13 +18,13 @@ module.exports = {
     },
 
     cadastro (req, res) {
-      return res.send('Cadastro')
+      return res.render('create')
     },
 
     async store (req,res) {
       try {
         const adaptador = await Adaptador.create(req.body)
-        return res.json(adaptador)  
+        return res.redirect('/adaptador')  
       } catch (error) {
         return res.status(400).send({error: error})
       } 
@@ -37,7 +37,7 @@ module.exports = {
         if (adaptador === null) 
           return res.send('rota não existe!!')
         
-        return res.json(adaptador)  
+        return res.render('edit', {adaptador})  
       } catch (error) {
         return res.status(400).send({error: error})
       }
@@ -54,7 +54,7 @@ module.exports = {
         if (adaptador[0] === 0) 
           return res.send('rota não existe')
     
-        return res.json(adaptador)
+        return res.redirect('/adaptador')
       } catch (error) {
           return res.status(400).send({error: error})
       }
