@@ -1,4 +1,5 @@
 const express = require('express')
+var methodOverride = require('method-override')
 const bodyParser = require('body-parser')
 const path = require('path')
 const router = require('./src/routes/adaptador_routes')
@@ -7,6 +8,7 @@ const helpers = require('./src/helpers/pagination')
 
 const app = express()
 
+app.use(methodOverride('_method'))
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
@@ -24,6 +26,6 @@ app.set('views', path.join(__dirname, 'src/views'))
 app.engine('.hbs', hbs.engine)
 app.set("view engine", ".hbs");
 
-app.use('/adaptador', router)
+app.use('/', router)
 
 app.listen(8888)

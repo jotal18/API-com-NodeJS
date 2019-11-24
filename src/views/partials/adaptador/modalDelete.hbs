@@ -1,0 +1,15 @@
+{{#each adaptador}}
+    <div id="modal{{this.id}}" class="modal">
+        <div class="modal-content">
+            <h4>Exclusão de registro</h4>
+            <h6 style="font-weight: bold;" class="red-text accent-4-text">Tem certeza que deseja excluir o registro?</h6>
+        </div>
+        <div class="modal-footer">
+            <form action="/adaptador/{{this.id}}?_method=DELETE" method="post" id="form"> 
+                <input type="hidden" name="sim" id="{{this.id}}" value="{{this.id}}">
+                <button type="submit" class="modal-close waves-effect waves-green btn red accent-4" >Sim</button>
+                <a class="modal-close waves-effect waves-green btn blue lighten-1">Não</a>
+            </form>
+        </div>
+    </div>
+{{/each}}

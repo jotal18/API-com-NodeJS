@@ -1,5 +1,5 @@
 <div class="row">
-    <form action="/adaptador/update/{{adaptador.id}}" method="post" class="col s12">
+    <form action="/adaptador/{{adaptador.id}}?_method=PUT" method="post" class="col s12">
     <input type="hidden" name="_method" value="put">
         <div class="input-field col s6">
           <label for="name">Nome</label>
@@ -25,6 +25,5 @@
             </div>
         </div>
         <button class="waves-effect waves-light btn blue lighten-1">Atualizar</button>
-        <a class="waves-effect waves-light btn" onclick=>Voltar</a>
     </form>
 </div>
