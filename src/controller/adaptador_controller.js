@@ -23,8 +23,10 @@ module.exports = {
 
     async store (req,res) {
       try {
-        const adaptador = await Adaptador.create(req.body)
-        return res.redirect('/adaptador')  
+        const{nome, setor, matricula, observacao, data} = req.body
+        return res.send(data)
+        // const adaptador = await Adaptador.create(req.body)
+        // return res.redirect('/adaptador')  
       } catch (error) {
         return res.status(400).send({error: error})
       } 
