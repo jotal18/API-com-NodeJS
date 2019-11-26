@@ -50,22 +50,20 @@ function validate () {
   }
   
   if (setor.value == '' || setor.value == null || setor.value.length <= length || !isNaN(setor.value)) {
-    'O campo setor deve ser preenchido corretamente!'
     setor.focus()
     small_setor.classList.remove('grey-text')
     small_setor.classList.add('red-text')
-    small_setor.innerHTML = 'O campo matrícula não pode ser vazio ou menor que 7 dígitos!' 
+    small_setor.innerHTML = 'O campo setor deve ser preenchido corretamente!' 
     event.preventDefault()
   } else {
     small_setor.innerHTML = '' 
   }
   
   if (data.value == '' || data.value == null || data.value.length < 8) {
-    'O campo data não pode ser vazio ou incompleto!'
     data.focus()
     small_data.classList.remove('grey-text')
     small_data.classList.add('red-text')
-    small_data.innerHTML = 'O campo matrícula não pode ser vazio ou menor que 7 dígitos!' 
+    small_data.innerHTML = 'O campo data não pode ser vazio ou incompleto!' 
     event.preventDefault()
   } else {
     small_data.innerHTML = '' 

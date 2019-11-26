@@ -24,9 +24,11 @@ module.exports = {
     async store (req,res) {
       try {
         const{nome, setor, matricula, observacao, data} = req.body
-        return res.send(data)
+        let data_formatada = new Date(Date.parse(data))
+        // return res.send(d)
         // const adaptador = await Adaptador.create(req.body)
-        // return res.redirect('/adaptador')  
+        const adaptador = await Adaptador.create({nome, setor, matricula, observacao, data: data_formatada})
+        return res.redirect('/adaptador') 
       } catch (error) {
         return res.status(400).send({error: error})
       } 
@@ -34,12 +36,18 @@ module.exports = {
 
     async show (req, res) {
       try {
+        // // const {nome, matricula, setor, observacao, data} = await Adaptador.findByPk(req.params.id)
         const adaptador = await Adaptador.findByPk(req.params.id)
 
-        if (adaptador === null) 
-          return res.send('rota não existe!!')
-        
-        return res.render('edit', {adaptador})  
+        if (adaptador === null) return res.send('rota não existe!!')
+
+        let dia = adaptador.data.substr(8,2)
+        let mes = adaptador.data.substr(5,2)
+        let ano = adaptador.data.substr(0,4)
+        let data_formatada = `${dia}/${mes}/${ano}`
+
+        return res.render('edit', {adaptador: {id: adaptador.id, nome: adaptador.nome, setor: adaptador.setor, matricula: adaptador.matricula, observacao: adaptador.observacao, data: data_formatada}})  
+        // return res.render('edit', {teste: {cama: 'teste', sofa: 'teste1'}})  
       } catch (error) {
         return res.status(400).send({error: error})
       }
