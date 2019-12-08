@@ -15,7 +15,7 @@
         </div>
         <div class="input-field col s6">
           <label for="data">Data</label>
-          <input placeholder="Informe a data" name="data" id="data" type="text" class="validate" value="{{adaptador.data}}">
+          <input placeholder="Informe a data" name="data" id="data" type="text" class="validate" value="{{formattedDate adaptador.data}}">
         </div>
         <form class="col s12">
         <div class="row">
@@ -24,6 +24,13 @@
             <label for="observacao">Observação</label>
             </div>
         </div>
-        <button class="waves-effect waves-light btn blue lighten-1">Atualizar</button>
+        <a href="/adaptador" class="btn waves-effect waves-light grey lighten-1">
+          <i class="material-icons prefix">arrow_back</i> 
+          <span>Voltar</span> 
+        </a>
+        <button class="waves-effect waves-light btn blue lighten-1">
+          Atualizar
+          <i class="material-icons prefix">update</i> 
+        </button>
     </form>
 </div>

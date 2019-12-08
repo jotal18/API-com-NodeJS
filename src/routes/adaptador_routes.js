@@ -9,4 +9,5 @@ router.get('/adaptador/:id', adaptador_controller.show)
 router.put('/adaptador/:id', adaptador_controller.update)
 router.delete('/adaptador/:id', adaptador_controller.delete)
 
+
 module.exports = router

@@ -1,4 +1,4 @@
-exports.pagination = function (pageCurrent, totalPages, totalButtons) {
+exports.pagination = function (pageCurrent, totalPages) {
             if (pageCurrent > 0) {
                 let text = '<ul class="pagination">'
                     if (pageCurrent == 1) {

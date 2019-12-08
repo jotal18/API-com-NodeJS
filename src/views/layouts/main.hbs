@@ -21,8 +21,25 @@
     <body>
       {{{body}}}
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-      <script src="/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+      <script src="/js/jquery.mask.min.js"></script>
       <script type="text/javascript" src="/js/materialize.min.js"></script>
-      <script type="text/javascript" src="/funcoes.js"></script>
+      <script>
+        // Ativar o Modal do Materialize
+        document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+        })
+      </script>
+      <script>
+        //Utilizar o jQuery-Mask
+        $(document).ready(function(){
+          $("input[name='data']").mask('00/00/0000');
+        });
+
+        $(document).ready(function(){
+          $("input[name='matricula']").mask('0000000');
+        });
+      </script>
+      <script type="text/javascript" src="/helpers/validation.js"></script>
     </body>
   </html>

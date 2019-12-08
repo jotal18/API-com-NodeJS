@@ -2,7 +2,7 @@
     <div class="col s12">
       <div class="card grey lighten-5">
         <div class="card-content center-align">
-            <span class="card-title">Controle de Adaptadores e cabos VGA</span>
+            <span class="card-title">Registros</span>
             <table class="highlight responsive-table">
                 <thead>
                 <tr>
@@ -19,13 +19,13 @@
                 </thead>
                 <tbody>   
                     {{#each adaptador}}
-                    <tr>
-                        <td>{{this.id}}</td>
-                        <td>{{this.nome}}</td>
-                        <td>{{this.matricula}}</td>
-                        <td>{{this.setor}}</td>
-                        <td>{{this.data}}</td>
-                        <td>{{this.observacao}}</td>
+                        <td>{{id}}</td>
+                        <td>{{nome}}</td>
+                        <td>{{matricula}}</td>
+                        <td>{{setor}}</td>
+                        {{!-- <td>{{data}}</td> --}}
+                        <td>{{formattedDate data}}</td>
+                        <td>{{observacao}}</td>
                         <td>
                             <a class="waves-effect waves-light btn-small blue lighten-1" href="/adaptador/{{this.id}}">
                                 <i class=" material-icons">edit</i>

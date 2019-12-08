@@ -1,19 +1,3 @@
-// Ativar o Modal do Materialize
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.modal');
-  var instances = M.Modal.init(elems);
-})
-
-//Utilizar o jQuery-Mask
-$(document).ready(function(){
-  $("input[name='data']").mask('00/00/0000');
-});
-
-$(document).ready(function(){
-  $("input[name='matricula']").mask('0000000');
-});
-
-
 //Validação do Formulário de cadastro/editar
 let form = document.querySelector('form')
 form.onsubmit = () => validate()

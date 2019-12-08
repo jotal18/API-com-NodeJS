@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
-const AdaptadorModel = require('./src/model/Adaptador')
+const AdaptadorModel = require('./Adaptador')
+const {database, username, password, host, dialect} = require('../config/database')
 
-const {database, username, password, host, dialect} = require('./src/config/database')
 const sequelize = new Sequelize(database, username, password, {
     host,
     dialect,
@@ -32,7 +32,7 @@ a()
 
 const Adaptador = AdaptadorModel(sequelize, Sequelize)
 
-module.exports = {Adaptador, sequelize, Sequelize}
+module.exports = {Adaptador}
 
 // sequelize.sync({force: true})
 // sequelize.drop()
